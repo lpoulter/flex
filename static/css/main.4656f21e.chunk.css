@@ -78,7 +78,7 @@
   flex-shrink: 1;
 }
 
-.flex-nonw {
+.flex-none {
   flex: none;
 }
 
@@ -94,6 +94,13 @@
   flex: 1 1 auto;
 }
 
+.flex-gap {
+  margin-right: -10px;
+}
+
+.flex-gap-item {
+  margin-right: 10px;
+}
 .color-box {
   flex: 1 1;
   padding: 5px;
@@ -164,4 +171,4 @@
 }
 
 
-/*# sourceMappingURL=main.11b006c1.chunk.css.map*/
+/*# sourceMappingURL=main.4656f21e.chunk.css.map*/
