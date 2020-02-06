@@ -1,6 +1,6 @@
 {
   "name": "flex-wrapper-react",
-  "version": "0.1.9",
+  "version": "0.1.14",
   "description": "A abstraction on top of CSS display flex",
   "main": "Flex/index.js",
   "license": "ISC",

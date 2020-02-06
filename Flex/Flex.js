@@ -12,17 +12,35 @@ export function Flex({
   alignItems,
   wrap,
   Component = "div",
+  gap,
   ...rest
 }) {
   const classes = classnames(className, "flex-container", {
     [`flex-justify-content-${justifyContent}`]: justifyContent,
     [`flex-${direction}`]: direction,
     [`flex-align-items-${alignItems}`]: alignItems,
-    [`flex-wrap-${wrap}`]: wrap
+    [`flex-wrap-${wrap}`]: wrap,
+    "flex-gap": gap
   });
+
+  let mappedChildren = children;
+
+  if (gap) {
+    mappedChildren = React.Children.map(children, (child, index) => {
+      if(React.isValidElement(child)) {
+        return React.cloneElement(child, {
+          key: index,
+          className: child && child.props && child.props.className ? `${child.props.className} flex-gap-item` : 'flex-gap-item'
+        })
+      }
+      console.log('warning gap not applied child is not vaild element: ', child);
+      return child
+    })
+  }
+
   return (
     <Component className={classes} {...rest}>
-      {children}
+      {mappedChildren}
     </Component>
   );
 }

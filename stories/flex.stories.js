@@ -10,8 +10,8 @@ export default {
   decorators: [withKnobs]
 };
 
-function ColorBox({ children }) {
-  return <div className="color-box">{children}</div>;
+function ColorBox({ children, className }) {
+  return <div className={`color-box ${className}`}>{children}</div>;	  return <div className={`color-box ${className}`}>{children}</div>;
 }
 
 export function Direction(params) {
@@ -114,6 +114,16 @@ export function BarChart({ children }) {
       <div className="red" style={{ height: "50%", width: "33%" }} />
       <div className="red" style={{ height: "10%", width: "33%" }} />
       <div className="red" style={{ height: "98%", width: "33%" }} />
+    </Flex>
+  );
+}
+
+export function Gap() {
+  return (
+    <Flex gap>
+      <ColorBox>1</ColorBox>
+      <ColorBox>2</ColorBox>
+      <ColorBox>3</ColorBox>
     </Flex>
   );
 }

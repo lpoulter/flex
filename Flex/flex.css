@@ -78,7 +78,7 @@
   flex-shrink: 1;
 }
 
-.flex-nonw {
+.flex-none {
   flex: none;
 }
 
@@ -93,3 +93,12 @@
 .flex-fill {
   flex: 1 1 auto;
 }
+
+
+.flex-gap {
+  margin-right: -10px;
+}
+
+.flex-gap-item {
+  margin-right: 10px;
+} 
