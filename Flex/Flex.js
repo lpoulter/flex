@@ -59,7 +59,8 @@ Flex.propTypes = {
     "center",
     "space-between",
     "space-around",
-    "space-evenly"
+    "space-evenly",
+    "normal"
   ]),
   wrap: PropTypes.oneOf(["wrap", "no-wrap", "wrap-reverse"])
 };
