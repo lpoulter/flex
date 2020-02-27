@@ -1,20 +1,103 @@
 import React from "react";
 import { Flex } from "../Flex";
-import { withKnobs, select } from "@storybook/addon-knobs";
+import { withKnobs, select, boolean, radios } from "@storybook/addon-knobs";
 
 import "./flex-stories.css";
 
 export default {
   title: "Flex",
   component: Flex,
-  decorators: [withKnobs]
+  decorators: [
+    withKnobs,
+    // storyFn => <div style={{ height: "100vh" }}>{storyFn()}</div>
+  ]
 };
 
 function ColorBox({ children, className }) {
-  return <div className={`color-box ${className}`}>{children}</div>;	  return <div className={`color-box ${className}`}>{children}</div>;
+  return <div className={`color-box ${className}`}>{children}</div>;
+  return <div className={`color-box ${className}`}>{children}</div>;
 }
 
-export function Direction(params) {
+export function Configurable() {
+  const directionLabel = "Direction";
+  const directionOptions = {
+    row: "row",
+    column: "column",
+    "row-reverse": "row-reverse",
+    "column-reverse": "column-reverse"
+  };
+  const directionDefaultValue = "row";
+
+  const direction = radios(
+    directionLabel,
+    directionOptions,
+    directionDefaultValue
+  );
+
+  const alignItemsLabel = "Align Items";
+  const alignItemsOptions = {
+    stretch: "stretch",
+    "flex-start": "flex-start",
+    "flex-end": "flex-end",
+    center: "center"
+  };
+  const alignItemsDefaultValue = "stretch";
+
+  const alignItems = radios(
+    alignItemsLabel,
+    alignItemsOptions,
+    alignItemsDefaultValue
+  );
+
+  const justifyContentLabel = "Justify Content";
+  const justifyContentOptions = {
+    normal: "normal",
+    "flex-start": "flex-start",
+    "flex-end": "flex-end",
+    center: "center",
+    "space-between": "space-between",
+    "space-around": "space-around",
+    "space-evenly": "space-evenly"
+  };
+  const justifyContentDefaultValue = "normal";
+
+  const justifyContent = radios(
+    justifyContentLabel,
+    justifyContentOptions,
+    justifyContentDefaultValue
+  );
+
+  const wrapLabel = "Wrap";
+  const wrapOptions = {
+    wrap: "wrap",
+    "no-wrap": "no-wrap",
+    "wrap-reverse": "wrap-reverse"
+  };
+  const wrapDefaultValue = "no-wrap";
+
+  const wrap = radios(wrapLabel, wrapOptions, wrapDefaultValue);
+
+  return (
+    <Flex
+      style={{ height: "100vh" }}
+      direction={direction}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
+      wrap={wrap}
+      gap={boolean("Gap", false)}
+    >
+      <ColorBox>1</ColorBox>
+      <ColorBox>2</ColorBox>
+      <ColorBox>3</ColorBox>
+      <ColorBox>4</ColorBox>
+      <ColorBox>5</ColorBox>
+      <ColorBox>6</ColorBox>
+      <ColorBox>7</ColorBox>
+    </Flex>
+  );
+}
+
+export function Direction() {
   const label = "Direction";
   const options = {
     row: "row",

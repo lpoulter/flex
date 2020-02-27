@@ -1,5 +1,4 @@
 .color-box {
-    flex: 1;
     padding: 5px;
     background-color: aqua;
     display: flex;
@@ -7,6 +6,10 @@
     align-items: center;
     border: 0.5px solid #f8f8f8;
     color: white;
+  }
+
+  .flex {
+    flex: 1;
   }
   
   .box {
