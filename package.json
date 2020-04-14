@@ -24,11 +24,13 @@
     "@storybook/addons": "^5.3.14",
     "@storybook/react": "^5.3.14",
     "babel-loader": "^8.0.6",
+    "git-cz": "^4.3.1",
     "semantic-release": "^17.0.4"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "commit": "git-cz"
   }
 }
