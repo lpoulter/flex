@@ -12,7 +12,6 @@ export function Flex({
   alignItems,
   wrap,
   Component = "div",
-  gap,
   ...rest
 }) {
   const classes = classnames(className, "flex-container", {
@@ -20,27 +19,11 @@ export function Flex({
     [`flex-${direction}`]: direction,
     [`flex-align-items-${alignItems}`]: alignItems,
     [`flex-wrap-${wrap}`]: wrap,
-    "flex-gap": gap
   });
-
-  let mappedChildren = children;
-
-  if (gap) {
-    mappedChildren = React.Children.map(children, (child, index) => {
-      if(React.isValidElement(child)) {
-        return React.cloneElement(child, {
-          key: index,
-          className: child && child.props && child.props.className ? `${child.props.className} flex-gap-item` : 'flex-gap-item'
-        })
-      }
-      console.log('warning gap not applied child is not vaild element: ', child);
-      return child
-    })
-  }
 
   return (
     <Component className={classes} {...rest}>
-      {mappedChildren}
+      {children}
     </Component>
   );
 }
@@ -51,7 +34,7 @@ Flex.propTypes = {
     "row",
     "column",
     "row-reverse",
-    "column-reverse"
+    "column-reverse",
   ]),
   justifyContent: PropTypes.oneOf([
     "flex-start",
@@ -60,7 +43,7 @@ Flex.propTypes = {
     "space-between",
     "space-around",
     "space-evenly",
-    "normal"
+    "normal",
   ]),
-  wrap: PropTypes.oneOf(["wrap", "no-wrap", "wrap-reverse"])
+  wrap: PropTypes.oneOf(["wrap", "no-wrap", "wrap-reverse"]),
 };
