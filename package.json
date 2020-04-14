@@ -1,12 +1,15 @@
 {
   "name": "flex-wrapper-react",
   "version": "0.1.14",
-  "description": "A abstraction on top of CSS display flex",
+  "description": "An abstraction on top of CSS display flex",
   "main": "Flex/index.js",
   "license": "ISC",
   "dependencies": {
-    "@storybook/addon-knobs": "^5.3.14",
     "classnames": "^2.2.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lpoulter/flex.git"
   },
   "peerDependencies": {
     "react": "^16.8",
@@ -15,6 +18,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@storybook/addon-actions": "^5.3.14",
+    "@storybook/addon-knobs": "^5.3.14",
     "@storybook/addon-links": "^5.3.14",
     "@storybook/addons": "^5.3.14",
     "@storybook/react": "^5.3.14",
