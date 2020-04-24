@@ -60,6 +60,7 @@ export function Configurable() {
         },
         "no-wrap"
       )}
+      gap={boolean("Gap")}
     >
       <ColorBox>1</ColorBox>
       <ColorBox>2</ColorBox>

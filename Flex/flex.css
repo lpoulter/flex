@@ -63,7 +63,7 @@
 }
 
 .flex-wrap-no-wrap {
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
 }
 
 .flex-wrap-wrap-reverse {
@@ -97,4 +97,3 @@
 .flex-gap {
   gap: 10px;
 }
- 

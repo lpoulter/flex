@@ -21,7 +21,7 @@ export function Flex({
     [`flex-${direction}`]: direction,
     [`flex-align-items-${alignItems}`]: alignItems,
     [`flex-wrap-${wrap}`]: wrap,
-    [`flex-${gap}`]: gap,
+    [`flex-gap`]: gap,
   });
 
   return (
