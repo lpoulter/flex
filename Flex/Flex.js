@@ -10,6 +10,10 @@ export function Flex({
   alignItems,
   wrap,
   gap,
+  grow,
+  basis,
+  shrink,
+  flex,
   ...rest
 }) {
   return (
@@ -23,6 +27,10 @@ export function Flex({
         alignItems: alignItems,
         flexWrap: wrap,
         gap,
+        flex,
+        flexGrow: grow,
+        flexBasis: basis,
+        flexShrink: shrink,
       }}
     >
       {children}

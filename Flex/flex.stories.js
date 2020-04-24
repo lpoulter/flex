@@ -181,3 +181,42 @@ export function BarChart({ children }) {
     </Flex>
   );
 }
+
+export function FlexGrow() {
+  return (
+    <Flex>
+      <Flex grow={3} style={{ backgroundColor: "Red" }}>
+        <div>Red</div>
+      </Flex>
+      <div style={{ backgroundColor: "blue" }}>blue</div>
+    </Flex>
+  );
+}
+
+export function FlexBasis() {
+  return (
+    <nav
+      style={{
+        width: "400px",
+        resize: "horizontal",
+        border: "1px dotted",
+        overflow: "hidden",
+      }}
+    >
+      <Flex As="ul" className="FlexBasis-nav">
+        <Flex As="li" flex="1 1 auto">
+          <a href="#">Page 1</a>
+        </Flex>
+        <Flex As="li" flex="1 1 auto">
+          <a href="#">Page 2</a>
+        </Flex>
+        <Flex As="li" flex="1 1 auto">
+          <a href="#">Page 3 is longer</a>
+        </Flex>
+        <Flex As="li" flex="1 1 auto">
+          <a href="#">Page 4</a>
+        </Flex>
+      </Flex>
+    </nav>
+  );
+}
