@@ -1,6 +1,12 @@
 import React from "react";
 import { Flex } from ".";
-import { withKnobs, select, boolean, radios } from "@storybook/addon-knobs";
+import {
+  withKnobs,
+  select,
+  boolean,
+  radios,
+  number,
+} from "@storybook/addon-knobs";
 
 import "./flex-stories.css";
 
@@ -60,7 +66,7 @@ export function Configurable() {
         },
         "no-wrap"
       )}
-      gap={boolean("Gap")}
+      gap={number("Gap")}
     >
       <ColorBox>1</ColorBox>
       <ColorBox>2</ColorBox>
