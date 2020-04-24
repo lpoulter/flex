@@ -7,83 +7,59 @@ import "./flex-stories.css";
 export default {
   title: "Flex",
   component: Flex,
-  decorators: [
-    withKnobs,
-    // storyFn => <div style={{ height: "100vh" }}>{storyFn()}</div>
-  ],
+  decorators: [withKnobs],
 };
 
 function ColorBox({ children, className }) {
   return <div className={`color-box ${className}`}>{children}</div>;
-  return <div className={`color-box ${className}`}>{children}</div>;
 }
 
 export function Configurable() {
-  const directionLabel = "Direction";
-  const directionOptions = {
-    row: "row",
-    column: "column",
-    "row-reverse": "row-reverse",
-    "column-reverse": "column-reverse",
-  };
-  const directionDefaultValue = "row";
-
-  const direction = radios(
-    directionLabel,
-    directionOptions,
-    directionDefaultValue
-  );
-
-  const alignItemsLabel = "Align Items";
-  const alignItemsOptions = {
-    stretch: "stretch",
-    "flex-start": "flex-start",
-    "flex-end": "flex-end",
-    center: "center",
-  };
-  const alignItemsDefaultValue = "stretch";
-
-  const alignItems = radios(
-    alignItemsLabel,
-    alignItemsOptions,
-    alignItemsDefaultValue
-  );
-
-  const justifyContentLabel = "Justify Content";
-  const justifyContentOptions = {
-    normal: "normal",
-    "flex-start": "flex-start",
-    "flex-end": "flex-end",
-    center: "center",
-    "space-between": "space-between",
-    "space-around": "space-around",
-    "space-evenly": "space-evenly",
-  };
-  const justifyContentDefaultValue = "normal";
-
-  const justifyContent = radios(
-    justifyContentLabel,
-    justifyContentOptions,
-    justifyContentDefaultValue
-  );
-
-  const wrapLabel = "Wrap";
-  const wrapOptions = {
-    wrap: "wrap",
-    "no-wrap": "no-wrap",
-    "wrap-reverse": "wrap-reverse",
-  };
-  const wrapDefaultValue = "no-wrap";
-
-  const wrap = radios(wrapLabel, wrapOptions, wrapDefaultValue);
-
   return (
     <Flex
       style={{ height: "100vh" }}
-      direction={direction}
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-      wrap={wrap}
+      direction={radios(
+        "Direction",
+        {
+          row: "row",
+          column: "column",
+          "row-reverse": "row-reverse",
+          "column-reverse": "column-reverse",
+        },
+        "column"
+      )}
+      alignItems={radios(
+        "Align Items",
+        {
+          stretch: "stretch",
+          "flex-start": "flex-start",
+          "flex-end": "flex-end",
+          center: "center",
+        },
+        "stretch"
+      )}
+      justifyContent={radios(
+        "Justify Content",
+        {
+          normal: "normal",
+          "flex-start": "flex-start",
+          "flex-end": "flex-end",
+          center: "center",
+          "space-between": "space-between",
+          "space-around": "space-around",
+          "space-evenly": "space-evenly",
+        },
+        "normal"
+      )}
+      wrap={radios(
+        "Wrap",
+        {
+          wrap: "wrap",
+          "no-wrap": "no-wrap",
+          "wrap-reverse": "wrap-reverse",
+        },
+        "no-wrap"
+      )}
     >
       <ColorBox>1</ColorBox>
       <ColorBox>2</ColorBox>
@@ -97,20 +73,19 @@ export function Configurable() {
 }
 
 export function Direction() {
-  const label = "Direction";
-  const options = {
-    row: "row",
-    column: "column",
-    "row-reverse": "row-reverse",
-    "column-reverse": "column-reverse",
-  };
-  const defaultValue = "column";
-  const groupId = "GROUP-ID1";
-
-  const direction = select(label, options, defaultValue, groupId);
-
   return (
-    <Flex direction={direction}>
+    <Flex
+      direction={radios(
+        "Direction",
+        {
+          row: "row",
+          column: "column",
+          "row-reverse": "row-reverse",
+          "column-reverse": "column-reverse",
+        },
+        "column"
+      )}
+    >
       <ColorBox>1</ColorBox>
       <ColorBox>2</ColorBox>
       <ColorBox>3</ColorBox>
