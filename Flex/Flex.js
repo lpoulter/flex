@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import Base from "./Base";
 
 import "./flex.css";
 
@@ -11,20 +12,22 @@ export function Flex({
   className,
   alignItems,
   wrap,
-  Component = "div",
+  gap,
   ...rest
 }) {
+
   const classes = classnames(className, "flex-container", {
     [`flex-justify-content-${justifyContent}`]: justifyContent,
     [`flex-${direction}`]: direction,
     [`flex-align-items-${alignItems}`]: alignItems,
     [`flex-wrap-${wrap}`]: wrap,
+    [`flex-${gap}`]: gap,
   });
 
   return (
-    <Component className={classes} {...rest}>
+    <Base className={classes} {...rest}>
       {children}
-    </Component>
+    </Base>
   );
 }
 

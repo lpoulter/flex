@@ -128,7 +128,7 @@ export function Navigation() {
       <Flex
         style={{ listStyle: "none", paddingLeft: "0" }}
         justifyContent="space-around"
-        Component="ul"
+        As="ul"
       >
         <li style={{ border: "2px dotted red" }}>Home</li>
         <li style={{ border: "2px dotted red" }}>About</li>

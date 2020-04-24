@@ -94,11 +94,7 @@
   flex: 1 1 auto;
 }
 
-
 .flex-gap {
-  margin-right: -10px;
+  gap: 10px;
 }
-
-.flex-gap-item {
-  margin-right: 10px;
-} 
+ 
