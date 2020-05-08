@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Base from "./Base";
+import {Base} from "./Base";
 
+/**
+ * As a Flex container. Pass continer styles. 
+ * Will pass Flex child styles onto Base.
+ */
 export function Flex({
   children,
   style,
@@ -10,10 +14,6 @@ export function Flex({
   alignItems,
   wrap,
   gap,
-  grow,
-  basis,
-  shrink,
-  flex,
   ...rest
 }) {
   return (
@@ -27,10 +27,6 @@ export function Flex({
         alignItems: alignItems,
         flexWrap: wrap,
         gap,
-        flex,
-        flexGrow: grow,
-        flexBasis: basis,
-        flexShrink: shrink,
       }}
     >
       {children}

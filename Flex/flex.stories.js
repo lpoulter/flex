@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex } from ".";
+import { Flex, Base } from ".";
 import {
   withKnobs,
   select,
@@ -16,8 +16,12 @@ export default {
   decorators: [withKnobs],
 };
 
-function ColorBox({ children, className }) {
-  return <div className={`color-box ${className}`}>{children}</div>;
+function ColorBox({ children, className, ...rest }) {
+  return (
+    <Base className={`color-box ${className}`} {...rest}>
+      {children}
+    </Base>
+  );
 }
 
 export function Configurable() {
@@ -193,7 +197,7 @@ export function FlexGrow() {
   );
 }
 
-export function FlexBasis() {
+export function FlexProperty() {
   return (
     <nav
       style={{
@@ -204,19 +208,31 @@ export function FlexBasis() {
       }}
     >
       <Flex As="ul" className="FlexBasis-nav">
-        <Flex As="li" flex="1 1 auto">
+        <Base As="li" flex="1 1 auto">
           <a href="#">Page 1</a>
-        </Flex>
-        <Flex As="li" flex="1 1 auto">
+        </Base>
+        <Base As="li" flex="1 1 auto">
           <a href="#">Page 2</a>
-        </Flex>
-        <Flex As="li" flex="1 1 auto">
+        </Base>
+        <Base As="li" flex="1 1 auto">
           <a href="#">Page 3 is longer</a>
-        </Flex>
-        <Flex As="li" flex="1 1 auto">
+        </Base>
+        <Base As="li" flex="1 1 auto">
           <a href="#">Page 4</a>
-        </Flex>
+        </Base>
       </Flex>
     </nav>
+  );
+}
+
+export function FlexGrow2() {
+  return (
+    <Flex>
+      <ColorBox grow={3}>3</ColorBox>
+      <Base grow={2}>
+        <div>grow 2</div>
+      </Base>
+      <ColorBox />
+    </Flex>
   );
 }
