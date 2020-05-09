@@ -236,3 +236,85 @@ export function FlexGrow2() {
     </Flex>
   );
 }
+
+export function Grid() {
+  return (
+    <Flex wrap="wrap" gap="0.5rem 1rem">
+      <ColorBox style={{ width: "28%" }} />
+      <ColorBox style={{ width: "28%" }} />
+      <ColorBox style={{ width: "28%" }} />
+      <ColorBox style={{ width: "28%" }} />
+      <ColorBox style={{ width: "28%" }} />
+      <ColorBox style={{ width: "28%" }} />
+      <ColorBox style={{ width: "28%" }} />
+      <ColorBox style={{ width: "28%" }} />
+      <ColorBox style={{ width: "28%" }} />
+    </Flex>
+  );
+}
+
+export function Stack() {
+  return (
+    <Flex direction="column" alignItems="center" gap="1rem">
+      <ColorBox style={{ width: "40%", height: "40px" }} />
+      <ColorBox style={{ width: "40%", height: "40px" }} />
+      <ColorBox style={{ width: "40%", height: "40px" }} />
+      <ColorBox style={{ width: "40%", height: "40px" }} />
+      <ColorBox style={{ width: "40%", height: "40px" }} />
+      <ColorBox style={{ width: "40%", height: "40px" }} />
+      <ColorBox style={{ width: "40%", height: "40px" }} />
+    </Flex>
+  );
+}
+
+export function Flex1() {
+  return (
+    <Flex gap="1rem">
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+    </Flex>
+  );
+}
+
+export function TwoOneGrid() {
+  return (
+    <Flex gap="1rem" wrap="wrap">
+      <ColorBox style={{ width: "45%" }} grow={1} />
+      <ColorBox style={{ width: "45%" }} grow={1} />
+      <ColorBox style={{ width: "100%" }} grow={1} />
+      <ColorBox style={{ width: "45%" }} grow={1} />
+      <ColorBox style={{ width: "45%" }} grow={1} />    
+    </Flex>
+  );
+}
+
+
+
+export function NestFlex() {
+  return (
+    <Flex As="body" direction="column" wrap="wrap" style={{ minHeight: "100vh" }}>
+      <header style={{ height: "20vh", backgroundColor: "green" }}>
+        Header
+      </header>
+      <Flex direction="row" grow={1}>
+        <Base As="nav" grow={1}>
+          Sidebar
+        </Base>
+        <Base As="article" grow={1} style={{ backgroundColor: "red" }}>
+          Article
+        </Base>
+        <Base As="aside" flex="0 0 20vw">
+          Aside
+        </Base>
+      </Flex>
+      <Base As="footer" style={{ height: "20vh", backgroundColor: "green" }}>
+        Footer
+      </Base>
+    </Flex>
+  );
+}
