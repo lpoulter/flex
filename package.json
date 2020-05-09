@@ -4,9 +4,15 @@
   "description": "An abstraction on top of CSS display flex",
   "main": "Flex/index.js",
   "license": "ISC",
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "semantic-release": "semantic-release",
+    "commit": "git-cz",
+    "build": "npx babel Flex  --out-dir dist"
+  },
   "dependencies": {
-    "classnames": "^2.2.6",
-    "semantic-release-cli": "^5.2.3"
+    "classnames": "^2.2.6"
   },
   "repository": {
     "type": "git",
@@ -17,18 +23,16 @@
     "react-dom": "^16.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/plugin-transform-react-jsx": "^7.9.4",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.0.6",
     "git-cz": "^4.3.1",
-    "semantic-release": "^17.0.4"
-  },
-  "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "semantic-release": "semantic-release",
-    "commit": "git-cz"
+    "semantic-release": "^17.0.4",
+    "semantic-release-cli": "^5.2.3"
   }
 }
