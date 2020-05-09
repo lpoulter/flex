@@ -10,7 +10,7 @@
     "build-storybook": "build-storybook",
     "semantic-release": "semantic-release",
     "commit": "git-cz",
-    "build": "npx babel Flex  --out-dir dist"
+    "build": "npx babel dist"
   },
   "dependencies": {
     "classnames": "^2.2.6"
