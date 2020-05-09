@@ -318,3 +318,28 @@ export function NestFlex() {
     </Flex>
   );
 }
+
+export function gapPresets() {
+  return (
+    <Flex
+      gap={radios(
+        "Gap",
+        {
+          "tiny": "tiny",
+          "small": "small",
+          "medium": "medium",
+          "large": "large",
+        },
+        "medium"
+      )}
+    >
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+    </Flex>
+  );
+}

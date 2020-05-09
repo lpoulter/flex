@@ -1,0 +1,19 @@
+.flex {
+  --spacing-grid-size: 0.25rem;
+}
+
+.flex--tiny {
+  gap: calc(var(--spacing-grid-size) * 2);
+}
+
+.flex--small {
+  gap: calc(var(--spacing-grid-size) * 4);
+}
+
+.flex--medium {
+  gap: calc(var(--spacing-grid-size) * 6);
+}
+
+.flex--large {
+  gap: calc(var(--spacing-grid-size) * 8);
+}

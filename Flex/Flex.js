@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Base} from "./Base";
-
+import classnames from "classnames";
+import { Base } from "./Base";
+import "./Flex.css";
 /**
- * As a Flex container. Pass continer styles. 
+ * As a Flex container. Pass continer styles.
  * Will pass Flex child styles onto Base.
  */
 export function Flex({
   children,
+  className,
   style,
   direction,
   justifyContent,
@@ -16,9 +18,19 @@ export function Flex({
   gap,
   ...rest
 }) {
+  const gapContainsNumbers = /[0-9]/.test(gap);
+  const classes = classnames(
+    "flex",
+    {
+      [`flex--${gap}`]: !gapContainsNumbers,
+    },
+    className
+  );
+
   return (
     <Base
       {...rest}
+      className={classes}
       style={{
         ...style,
         display: "flex",
@@ -52,5 +64,5 @@ Flex.propTypes = {
     "normal",
   ]),
   wrap: PropTypes.oneOf(["wrap", "no-wrap", "wrap-reverse"]),
-  gap: PropTypes.number,
+  gap: PropTypes.string,
 };
