@@ -16,6 +16,7 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
+      - run: rsync --exclude=*stories.* ./Flex/* ./dist
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
