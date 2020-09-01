@@ -1,19 +1,11 @@
 import React from "react";
 import { Flex, Base } from ".";
-import {
-  withKnobs,
-  select,
-  boolean,
-  radios,
-  number,
-} from "@storybook/addon-knobs";
 
 import "./flex-stories.css";
 
 export default {
   title: "Flex",
   component: Flex,
-  decorators: [withKnobs],
 };
 
 function ColorBox({ children, className, ...rest }) {
@@ -24,53 +16,21 @@ function ColorBox({ children, className, ...rest }) {
   );
 }
 
-export function Configurable() {
+export function Configurable({
+  direction,
+  alignItems,
+  justifyContent,
+  wrap,
+  gap,
+}) {
   return (
     <Flex
       style={{ height: "100vh" }}
-      direction={radios(
-        "Direction",
-        {
-          row: "row",
-          column: "column",
-          "row-reverse": "row-reverse",
-          "column-reverse": "column-reverse",
-        },
-        "column"
-      )}
-      alignItems={radios(
-        "Align Items",
-        {
-          stretch: "stretch",
-          "flex-start": "flex-start",
-          "flex-end": "flex-end",
-          center: "center",
-        },
-        "stretch"
-      )}
-      justifyContent={radios(
-        "Justify Content",
-        {
-          normal: "normal",
-          "flex-start": "flex-start",
-          "flex-end": "flex-end",
-          center: "center",
-          "space-between": "space-between",
-          "space-around": "space-around",
-          "space-evenly": "space-evenly",
-        },
-        "normal"
-      )}
-      wrap={radios(
-        "Wrap",
-        {
-          wrap: "wrap",
-          "no-wrap": "no-wrap",
-          "wrap-reverse": "wrap-reverse",
-        },
-        "no-wrap"
-      )}
-      gap={number("Gap")}
+      direction={direction}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
+      wrap={wrap}
+      gap={gap}
     >
       <ColorBox>1</ColorBox>
       <ColorBox>2</ColorBox>
@@ -83,30 +43,49 @@ export function Configurable() {
   );
 }
 
-export function Direction() {
+export function FlexGrowChildrenThatExtendBase({ grow, ...rest }) {
   return (
-    <Flex
-      direction={radios(
-        "Direction",
-        {
-          row: "row",
-          column: "column",
-          "row-reverse": "row-reverse",
-          "column-reverse": "column-reverse",
-        },
-        "column"
-      )}
-    >
-      <ColorBox>1</ColorBox>
-      <ColorBox>2</ColorBox>
-      <ColorBox>3</ColorBox>
-      <ColorBox>4</ColorBox>
-      <ColorBox>5</ColorBox>
-      <ColorBox>6</ColorBox>
-      <ColorBox>7</ColorBox>
+    <Flex {...rest}>
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={grow}>Grow Me</ColorBox>
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
+      <ColorBox grow={1} />
     </Flex>
   );
 }
+
+FlexGrowChildrenThatExtendBase.args = { grow: 1, gap: "10px" };
+
+export function FlexGrowChildrenWithoutBase({ grow, ...rest }) {
+  return (
+    <Flex {...rest}>
+      <Flex style={{ backgroundColor: "Red", color: "white" }} grow={grow}>
+        <div>Grow Me</div>
+      </Flex>
+      <Flex grow={1} style={{ backgroundColor: "Blue", color: "white" }}>
+        <div>Blue</div>
+      </Flex>
+    </Flex>
+  );
+}
+
+FlexGrowChildrenWithoutBase.args = { grow: 3 };
+
+export function FlexGrowMixed({ grow, ...rest }) {
+  return (
+    <Flex {...rest}>
+      <Flex style={{ backgroundColor: "Red", color: "white" }} grow={grow}>
+        <div>Grow Me</div>
+      </Flex>
+      <ColorBox grow={1}> ColorBox </ColorBox>
+    </Flex>
+  );
+}
+
+FlexGrowMixed.args = { grow: 3 };
 
 export function Navigation() {
   return (
@@ -142,7 +121,7 @@ export function Center() {
 
 export function CardRow() {
   return (
-    <Flex direction="row" justifyContent="space-around">
+    <Flex>
       <Card>
         This card has a lot more content which means that it defines the height
         of the container both the cards are in.
@@ -186,17 +165,6 @@ export function BarChart({ children }) {
   );
 }
 
-export function FlexGrow() {
-  return (
-    <Flex>
-      <Flex grow={3} style={{ backgroundColor: "Red" }}>
-        <div>Red</div>
-      </Flex>
-      <div style={{ backgroundColor: "blue" }}>blue</div>
-    </Flex>
-  );
-}
-
 export function FlexProperty() {
   return (
     <nav
@@ -222,18 +190,6 @@ export function FlexProperty() {
         </Base>
       </Flex>
     </nav>
-  );
-}
-
-export function FlexGrow2() {
-  return (
-    <Flex>
-      <ColorBox grow={3}>3</ColorBox>
-      <Base grow={2}>
-        <div>grow 2</div>
-      </Base>
-      <ColorBox />
-    </Flex>
   );
 }
 
@@ -267,20 +223,6 @@ export function Stack() {
   );
 }
 
-export function Flex1() {
-  return (
-    <Flex gap="1rem">
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-    </Flex>
-  );
-}
-
 export function TwoOneGrid() {
   return (
     <Flex gap="1rem" wrap="wrap">
@@ -288,16 +230,19 @@ export function TwoOneGrid() {
       <ColorBox style={{ width: "45%" }} grow={1} />
       <ColorBox style={{ width: "100%" }} grow={1} />
       <ColorBox style={{ width: "45%" }} grow={1} />
-      <ColorBox style={{ width: "45%" }} grow={1} />    
+      <ColorBox style={{ width: "45%" }} grow={1} />
     </Flex>
   );
 }
 
-
-
 export function NestFlex() {
   return (
-    <Flex As="body" direction="column" wrap="wrap" style={{ minHeight: "100vh" }}>
+    <Flex
+      As="body"
+      direction="column"
+      wrap="wrap"
+      style={{ minHeight: "100vh" }}
+    >
       <header style={{ height: "20vh", backgroundColor: "green" }}>
         Header
       </header>
@@ -315,31 +260,6 @@ export function NestFlex() {
       <Base As="footer" style={{ height: "20vh", backgroundColor: "green" }}>
         Footer
       </Base>
-    </Flex>
-  );
-}
-
-export function gapPresets() {
-  return (
-    <Flex
-      gap={radios(
-        "Gap",
-        {
-          "tiny": "tiny",
-          "small": "small",
-          "medium": "medium",
-          "large": "large",
-        },
-        "medium"
-      )}
-    >
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
-      <ColorBox grow={1} />
     </Flex>
   );
 }

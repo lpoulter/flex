@@ -11,11 +11,11 @@ export function Flex({
   children,
   className,
   style,
-  direction,
-  justifyContent,
-  alignItems,
-  wrap,
-  gap,
+  direction = "row",
+  justifyContent = "flex-start",
+  alignItems = "stretch",
+  wrap = "no-wrap",
+  gap = "0rem",
   ...rest
 }) {
   const gapContainsNumbers = /[0-9]/.test(gap);
